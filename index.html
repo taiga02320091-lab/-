@@ -93,12 +93,13 @@
             document.getElementById('title').value = '';
             renderRoutines();
         }
-
-        function deleteRoutine(index) {
-            const target = filteredRoutines()[index];
-            routines = routines.filter(r => r !== target);
-            localStorage.setItem('routines', JSON.stringify(routines));
-            renderRoutines();
+function deleteRoutine(globalIndex) {
+    // 全体の配列から、現在の曜日に合致するもののうち指定されたインデックスのものを特定して削除
+    const target = filteredRoutines()[globalIndex];
+    routines = routines.filter(r => r !== target);
+    localStorage.setItem('routines', JSON.stringify(routines));
+    renderRoutines();
+}
         }
 
         function filteredRoutines() {
